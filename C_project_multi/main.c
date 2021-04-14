@@ -1,30 +1,45 @@
 #include "synaptics.h"
 
+typedef struct synaptics_t {                 
+    double array[column];
+    double matrix[row][column];
+   
+}synaptics;
+
 void main() {
-    double test_syn[sys];
-    double input_mat[row][column];
-    double output_mat[row][column];
-    double dots_mat[row][column];
-    double sig_value_mat[row][column];
-    double sig_derivative_mat[row][column];
-    double error[row][column];
-    double transpose[row][column];
-    double adjust[row][column];
+    synaptics test_syn;
+    //double test_syn[sys];
+    synaptics input_mat;
+    //double input_mat[row][column];
+    synaptics output_mat;
+    //double output_mat[row][column];
+    synaptics dots_mat;
+    //double dots_mat[row][column];
+    synaptics sig_value_mat;
+    //double sig_value_mat[row][column];
+    synaptics sig_derivative_mat;
+    //double sig_derivative_mat[row][column];
+    synaptics error;
+    //double error[row][column];
+    synaptics transpose;
+    //double transpose[row][column];
+    synaptics adjust;
+    //double adjust[row][column];
 
 
 
-    create_vector(test_syn);
-    for (int i = 0; i < 500000; i++) {
-        training_Set_input(input_mat);
-        training_Set_output(output_mat);
-        dots_product(dots_mat, input_mat, test_syn);
-        sigmoid_function(sig_value_mat, dots_mat);
-        sigmoid_derivative_function(sig_derivative_mat, sig_value_mat);
-        error_calc(error, output_mat, sig_value_mat, sig_derivative_mat);
-        transpose_f(transpose, input_mat);
-        adjust_f(adjust, transpose, error);
-        result_f(test_syn, adjust);
-        print_res(test_syn);
+    create_vector(test_syn.array);
+    for (int i = 0; i < iteration; i++) {
+        training_Set_input(input_mat.matrix);
+        training_Set_output(output_mat.matrix);
+        dots_product(dots_mat.matrix, input_mat.matrix, test_syn.array);
+        sigmoid_function(sig_value_mat.matrix, dots_mat.matrix);
+        sigmoid_derivative_function(sig_derivative_mat.matrix, sig_value_mat.matrix);
+        error_calc(error.matrix, output_mat.matrix, sig_value_mat.matrix, sig_derivative_mat.matrix);
+        transpose_f(transpose.matrix, input_mat.matrix);
+        adjust_f(adjust.matrix, transpose.matrix, error.matrix);
+        result_f(test_syn.array, adjust.matrix);
+        print_res(test_syn.array);
     }
 
 
@@ -45,9 +60,9 @@ void main() {
 
     double por;
 
-    por = test_syn[0] * 1;
-    por += test_syn[1] * 0;
-    por += test_syn[2] * 0;
+    por = test_syn.array[0] * 1;
+    por += test_syn.array[1] * 0;
+    por += test_syn.array[2] * 0;
 
     por = ((1.0) / (1 + exp(-por)));
 
