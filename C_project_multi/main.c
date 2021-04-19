@@ -1,6 +1,6 @@
 /*date 19.04.2021
 * author: Gonzalo Araya
-* Project: trainning of a synaptics red color reference values
+* Project: training of a synaptics red color reference values
 * Course: C Programming
 * IT-2020
 */
