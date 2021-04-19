@@ -10,6 +10,7 @@
 #define row 4
 #define column 4
 
+
 //training function
 void create_vector(double[]);
 void training_Set_input(double[][column]);
@@ -22,9 +23,7 @@ void transpose_f(double[][column], double[][column]);
 void adjust_f(double[][column], double[][column], double[][column]);
 void result_f(double[], double[][column]);
 
-//print functions
-void print_vector(double[]);
-void print_input_mat(double[][column]);
+//print function
 void print_res(double[]);
 
 
